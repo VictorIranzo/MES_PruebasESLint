@@ -35,6 +35,7 @@ export class NuevaUTComponent {
     IdProyecto: null,
   };
 
+
   constructor(
     createUTService: CreateUTService,
     getProductosService : GetProductosService,
@@ -103,7 +104,7 @@ export class NuevaUTComponent {
           (data) => {
             workflowsCache[idProducto] = this._parseWorkflows(data);
             this.workflows = workflowsCache[idProducto];
-            this.ut.IdWorkflow = this.workflows[0] ? this.workflows[0].value : null;
+            this.ut.IdWorkflow = this.workflows[0]? this.workflows[0].value : null;
           }
         );
     }
@@ -123,13 +124,13 @@ export class NuevaUTComponent {
         (data) => {
           proyectosCache[idProducto] = this._parseProyectos(data);
           this.proyectos = proyectosCache[idProducto];
-          this.ut.IdProyecto = this.proyectos[0] ? this.proyectos[0].value : null;
+          this.ut.IdProyecto = this.proyectos[0]? this.proyectos[0].value : null;
         },
         (error) =>
           this._notificationService.error(
             'No se han podido obtener los proyectos del producto',
-            error
-          ));
+          error
+        ));
     }
     return proyectosCache[idProducto];
   }
@@ -147,13 +148,13 @@ export class NuevaUTComponent {
           (data) => {
             tiposUTCache[idProducto] = this._parseTiposUT(data);
             this.tiposUT = tiposUTCache[idProducto];
-            this.ut.IdTipoUT = this.tiposUT[0] ? this.tiposUT[0].value : null;
+            this.ut.IdTipoUT = this.tiposUT[0]? this.tiposUT[0].value : null;
           },
           (error) =>
             this._notificationService.error(
               'No se han podido obtener los tipos de UT',
               error
-            ));
+        ));
     }
     return tiposUTCache[idProducto];
   }
@@ -168,18 +169,18 @@ export class NuevaUTComponent {
     if (!sprintsCache[idProducto]) {
       this._getSprintsSubscription =
        this._getSprintsService.get(idProducto).subscribe(
-         (data) => {
-           sprintsCache[idProducto] = this._parseSprints(data);
-           this.sprints = sprintsCache[idProducto];
-           this.ut.IdVersion = this.sprints[0] ? this.sprints[0].value : null;
-         },
-         (error) => {
-           this._notificationService.error(
-             'No se han podido obtener los Sprints del producto',
-             error
-           );
-         }
-       );
+        (data) => {
+          sprintsCache[idProducto] = this._parseSprints(data);
+          this.sprints = sprintsCache[idProducto];
+          this.ut.IdVersion = this.sprints[0]? this.sprints[0].value : null;
+        },
+        (error) => {
+          this._notificationService.error(
+            'No se han podido obtener los Sprints del producto',
+            error
+          );
+        }
+      );
     }
     return sprintsCache[idProducto];
   }
@@ -191,10 +192,10 @@ export class NuevaUTComponent {
   }
 
   _seleccionarValoresPorDefecto() {
-    this.ut.IdWorkflow = this.workflows && this.workflows[0] ? this.workflows[0].value : null;
-    this.ut.IdProyecto = this.proyectos && this.proyectos[0] ? this.proyectos[0].value : null;
-    this.ut.IdVersion = this.IdVersion && this.sprints[0] ? this.sprints[0].value : null;
-    this.ut.IdTipoUT = this.tiposUT && this.tiposUT[0] ? this.tiposUT[0].value : null;
+    this.ut.IdWorkflow = this.workflows && this.workflows[0]? this.workflows[0].value : null;
+    this.ut.IdProyecto = this.proyectos && this.proyectos[0]? this.proyectos[0].value : null;
+    this.ut.IdVersion = this.IdVersion && this.sprints[0]? this.sprints[0].value : null;
+    this.ut.IdTipoUT = this.tiposUT && this.tiposUT[0]? this.tiposUT[0].value : null;
   }
 
   onProductChanged(idNuevoProducto) {
@@ -205,11 +206,11 @@ export class NuevaUTComponent {
     this._crearUTSubscription =
     this._createUTService.put(this.ut).subscribe(
       (data) => {
-        this._notificationService.success(
-          'La UT se ha creado con exito',
-          `UT: ${this.ut.Nombre}`
-        );
-        this._clearFields();
+          this._notificationService.success(
+            'La UT se ha creado con exito',
+            `UT: ${this.ut.Nombre}`
+          );
+          this._clearFields();
       },
       (error) => {
         this._notificationService.error(

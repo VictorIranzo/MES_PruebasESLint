@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {UtSearchService, ActivitiesService} from './services';
 import {BreadcrumbService} from '@tune-up/app';
 import {GetProductosService, GetProyectosService, GetSprintsProductoService,
-        GetTiposUTProductoService} from '../nuevaut';
+  GetTiposUTProductoService} from '../nuevaut';
 import {NotificationsService} from '@tune-up/core';
 
 import html from './utsearch.component.html';
@@ -33,20 +33,24 @@ const actividades = [];
   providers: [UtSearchService, ActivitiesService],
 })
 export class UtSearchComponent {
-  model = {NombreUT: '', IdProducto: undefined, IdSprint: undefined,
-           IdProyecto: undefined, IdTipoUT: undefined, Estado: undefined};
+  model = {NombreUT: '',
+    IdProducto: undefined,
+    IdSprint: undefined,
+    IdProyecto: undefined,
+    IdTipoUT: undefined,
+    Estado: undefined};
   selectableFields = false;
   uts = undefined;
 
   constructor(breadcrumbService: BreadcrumbService,
-              utSearchService: UtSearchService,
-              activitiesService: ActivitiesService,
-              getProductosService: GetProductosService,
-              getProyectosService: GetProyectosService,
-              getSprintsProductoService: GetSprintsProductoService,
-              getTiposUTProductoService: GetTiposUTProductoService,
-              notificationsService: NotificationsService,
-            ) {
+    utSearchService: UtSearchService,
+    activitiesService: ActivitiesService,
+    getProductosService: GetProductosService,
+    getProyectosService: GetProyectosService,
+    getSprintsProductoService: GetSprintsProductoService,
+    getTiposUTProductoService: GetTiposUTProductoService,
+    notificationsService: NotificationsService,
+  ) {
     this._utSearchService = utSearchService;
     this._activitiesService = activitiesService;
     this._breadcrumbService = breadcrumbService;
@@ -158,17 +162,17 @@ export class UtSearchComponent {
     if (!sprintsCache[idProducto]) {
       this._getSprintsSubscription =
        this._getSprintsService.get(idProducto).subscribe(
-        (data) => {
-          this._parseSprints(data);
-          sprintsCache[idProducto] = this.sprintsDisponibles;
-        },
-        (error) => {
-          this._notificationService.error(
-            'No se han podido obtener los Sprints del producto',
-            error
-          );
-        }
-      );
+         (data) => {
+           this._parseSprints(data);
+           sprintsCache[idProducto] = this.sprintsDisponibles;
+         },
+         (error) => {
+           this._notificationService.error(
+             'No se han podido obtener los Sprints del producto',
+             error
+           );
+         }
+       );
     } else {
       this.sprintsDisponibles = sprintsCache[idProducto];
     }
@@ -197,7 +201,7 @@ export class UtSearchComponent {
             this._notificationService.error(
               'No se han podido obtener los tipos de UT',
               error
-        ));
+            ));
     } else {
       this.tiposDisponibles = tiposUTCache[idProducto];
     }
@@ -226,8 +230,8 @@ export class UtSearchComponent {
   _getActividades() {
     this._getActividadesSubscription = this._activitiesService.getActivities().subscribe(
       (data) => {
-        data.map((actividad)=>{
-            actividades[actividad.IdActividad] = actividad.Nombre;
+        data.map((actividad) => {
+          actividades[actividad.IdActividad] = actividad.Nombre;
         });
       },
       (error) =>
@@ -235,7 +239,7 @@ export class UtSearchComponent {
           'No se han podido obtener las actividades',
           error)
     );
-    actividades[0]='Terminar';
+    actividades[0] = 'Terminar';
   }
 
   getActividad = (IdActividad) => {

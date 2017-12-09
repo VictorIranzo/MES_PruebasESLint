@@ -94,7 +94,7 @@ export class UtSearchComponent {
   }
 
   productoChange() {
-    if (this.model.IdProducto == 'ALL') {
+    if (this.model.IdProducto === 'ALL') {
       this.selectableFields = false;
       this.clearFieldsAndPutAll();
     } else {

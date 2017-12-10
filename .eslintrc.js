@@ -1,4 +1,5 @@
 module.exports = {
+    //Posibles valores para extends: eslint:recommended , airbnb , standard , google
     "extends": "standard",
     "parser" : "babel-eslint",
     "rules": {

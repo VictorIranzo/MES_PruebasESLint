@@ -1,38 +1,15 @@
 /**
- * The A class
- */
-export class A {}
-
-/**
  * The B class
  * @return {B} Object of class B.
  */
-export class B extends A {
-unaVariable = undefined;
-stringEnDosLineas = ' Hola' +
-'Mundo'
-numeroDecimal = .25
-
+export class B {
 frutas = ['manzana',
 'naranja'];
 zanahoria = {
     tipo: 'hortaliza',
     color: 'naranja',
 };
-
-/**
- * The constructor for class B
- */
-constructor() {
-    super();
-    this.a = 'melocotón';
-}
-
-otrasFrutas = obtenerFrutas()
-
-
 numeroUno = 1
-
 /**
  * Method that returns the frutas array
  * @return {string} Something.
@@ -44,14 +21,12 @@ return this.frutas;
 } else return undefined;
     return 'Imposible alcanzar este código';
 }
-
 /**
  * Method that returns the hortalizas array
  */
 obtenerHortalizas() {
 throw new Error('No implementado todavía');
 }
-
 /**
  * Method that returns the day of the week
  * @param {number} x The first number.
@@ -69,12 +44,9 @@ diaDeLaSemana(x, y, z) {
     }
     return diaSemana;
 }
-today = 3
-
 UnaArrowFunction=()=>{
 if ('melocotón'===a) return true;
 }
-
 /**
  * Method that returns the day of the week
  * @return {string} Something.

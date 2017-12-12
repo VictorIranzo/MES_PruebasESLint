@@ -1,0 +1,5 @@
+1. Instalar eslint en el proyecto y añadirlo como dependencia:
+$ npm install eslint --save-dev
+
+2. Crear el archivo .eslintrc.js:
+$ ./node_modules/.bin/eslint --init

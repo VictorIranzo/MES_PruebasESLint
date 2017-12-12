@@ -25,8 +25,8 @@ export class B {
   }
   UnaArrowFunction=() => { if (this.a === 'melocotón') return true }
   estiloIf () {
-    if (this.unaVariable == 'melocotón') {
-      if (this.diaSemana == 2) return 'Martes'
+    if (this.unaVariable === 'melocotón') {
+      if (this.diaSemana === 2) return 'Martes'
     } else {
       this.obtenerHortalizas()
     }
